@@ -1,10 +1,19 @@
-@charset "UTF-8";
+// RUN COMPILING: npm run compile:sass
+
 /*
 COLORS:
 Light green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
 */
+
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+$color-grey-dark: #777;
+$color-white: #fff;
+
+
 /* basic reset */
 *,
 *::after,
@@ -12,45 +21,54 @@ Dark green: #28b485
   margin: 0;
   padding: 0;
   /*box sizing alapból nem örökölhető*/
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
   /*set root font size -> 1rem = 10px easy to calculate :)
   font-size: 10px;*/
+
   /*browser 16 px -> mi 10px-et akarunk, de ne px-ben legyen megadva => 10/16 = 0.625*/
-  font-size: 62.5%; }
+  font-size: 62.5%;
+}
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   /*font-size: 16px;*/
   line-height: 1.7;
-  color: #777;
+  color: $color-grey-dark;
   padding: 3rem;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .header {
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  background-image: linear-gradient(to right bottom, rgba($color-primary-light, .8), rgba($color-primary-dark, .8)), url("../img/hero.jpg");
   background-size: cover;
   background-position: top;
   position: relative;
+
   /*óramutató járásának megfelelően adjuk meg a sarkok koordinátáit -> %, pixel, vh ...
   TRIANGLE pl: clip-path: polygon(0 0, 100% 50%, 0 100% );
 
 
   benettfeely.com/clippy
   */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100% );
+}
 
 .header__logo-box {
   /*absolute position -> szülője a header -> pos: relative, a tőle való pozíciót állítjuk!*/
   position: absolute;
   top: 4rem;
-  left: 4rem; }
+  left: 4rem;
+}
 
 .header__logo {
-  height: 3.5rem; }
+  height: 3.5rem;
+}
 
 .header__text-box {
   position: absolute;
@@ -58,20 +76,24 @@ body {
   left: 50%;
   /*a pozícionálással a text-box 40-50nél kezdődne (ott lenne a 0 0 pont), ezzel tudjuk csúsztatni*/
   transform: translate(-50%, -50%);
-  text-align: center; }
+  text-align: center;
+}
 
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
+
   /*animáció shaking-et javítja*/
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
+  backface-visibility: hidden ;
+  margin-bottom: 6rem;
+}
 
 .heading-primary--main {
   display: block;
   font-size: 6rem;
   font-weight: 400;
   letter-spacing: 3.5rem;
+
   animation-name: moveInLeft;
   animation-duration: 1s;
   /*animáció sebessége: itt gyorsan kezdődik és a végére belassul */
@@ -79,43 +101,57 @@ body {
   /*
   animation-delay: 3s;
   animation-iteration-count: 3;
-  */ }
+  */
+}
 
 .heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1.74rem;
+
   /*shorthand a fentihez:*/
-  animation: moveInRight 1s ease-out; }
+  animation: moveInRight 1s ease-out;
+}
 
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem); }
+    transform: translateX(-10rem);
+  }
   80% {
-    transform: translateX(1rem); }
+    transform: translateX(1rem) ;
+  }
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(10rem); }
+    transform: translateX(10rem);
+  }
   80% {
-    transform: translateX(-1rem); }
+    transform: translateX(-1rem) ;
+  }
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(3rem); }
+    transform: translateY(3rem);
+  }
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 /* sodoclasses, special state of a selector*/
 .btn:link,
@@ -127,20 +163,21 @@ body {
   border-radius: 10rem;
   transition: all .2s;
   position: relative;
-  font-size: 1.6rem; }
-
+  font-size: 1.6rem;
+}
 .btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  transform: translateY(-.3rem);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+}
 
 .btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
+  transform: translateY(-.1rem);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+}
 .btn--white {
-  background-color: #fff;
-  color: #777; }
-
+  background-color: $color-white;
+  color: $color-grey-dark;
+}
 /*
 ::after selector inserts something after the content of each selected element(s)
 content property to specify the content to insert.
@@ -155,16 +192,20 @@ content property to specify the content to insert.
   top: 0;
   left: 0;
   z-index: -1;
-  transition: all .4s; }
+  transition: all .4s;
+}
 
 .btn--white::after {
-  background-color: #fff; }
+  background-color:$color-white;
+}
 
 .btn--white:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
+  opacity: 0;
+}
 
 .btn--animated {
   /*animation name duration timing delay*/
   animation: moveInBottom .5s ease-out .75s;
-  animation-fill-mode: backwards; }
+  animation-fill-mode: backwards;
+}
