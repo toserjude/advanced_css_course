@@ -1,0 +1,21 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /*box sizing alapból nem örökölhető*/
+  box-sizing: inherit;
+}
+
+html {
+  /*set root font size -> 1rem = 10px easy to calculate :)
+  font-size: 10px;*/
+
+  /*browser 16 px -> mi 10px-et akarunk, de ne px-ben legyen megadva => 10/16 = 0.625
+  => this defines whar 1rem is*/
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}

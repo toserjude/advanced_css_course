@@ -1,87 +1,4 @@
 @charset "UTF-8";
-/*
-COLORS:
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-*/
-/* basic reset */
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  /*box sizing alapból nem örökölhető*/
-  box-sizing: inherit; }
-
-html {
-  /*set root font size -> 1rem = 10px easy to calculate :)
-  font-size: 10px;*/
-  /*browser 16 px -> mi 10px-et akarunk, de ne px-ben legyen megadva => 10/16 = 0.625*/
-  font-size: 62.5%; }
-
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  /*font-size: 16px;*/
-  line-height: 1.7;
-  color: #777;
-  padding: 3rem;
-  box-sizing: border-box; }
-
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
-  background-size: cover;
-  background-position: top;
-  position: relative;
-  /*óramutató járásának megfelelően adjuk meg a sarkok koordinátáit -> %, pixel, vh ...
-  TRIANGLE pl: clip-path: polygon(0 0, 100% 50%, 0 100% );
-  benettfeely.com/clippy
-  */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
-  .header__logo-box {
-    /*absolute position -> szülője a header -> pos: relative, a tőle való pozíciót állítjuk!*/
-    position: absolute;
-    top: 4rem;
-    left: 4rem; }
-  .header__logo {
-    height: 3.5rem; }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    /*a pozícionálással a text-box 40-50nél kezdődne (ott lenne a 0 0 pont), ezzel tudjuk csúsztatni*/
-    transform: translate(-50%, -50%);
-    text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /*animáció shaking-et javítja*/
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    /*animáció sebessége: itt gyorsan kezdődik és a végére belassul */
-    animation-timing-function: ease-out;
-    /*
-    animation-delay: 3s;
-    animation-iteration-count: 3;
-    */ }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.74rem;
-    /*shorthand a fentihez:*/
-    animation: moveInRight 1s ease-out; }
-
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -109,6 +26,58 @@ body {
   100% {
     opacity: 1;
     transform: translate(0); } }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /*box sizing alapból nem örökölhető*/
+  box-sizing: inherit; }
+
+html {
+  /*set root font size -> 1rem = 10px easy to calculate :)
+  font-size: 10px;*/
+  /*browser 16 px -> mi 10px-et akarunk, de ne px-ben legyen megadva => 10/16 = 0.625
+  => this defines whar 1rem is*/
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /*animáció shaking-et javítja*/
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    /*animáció sebessége: itt gyorsan kezdődik és a végére belassul */
+    animation-timing-function: ease-out;
+    /*
+    animation-delay: 3s;
+    animation-iteration-count: 3;
+    */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.74rem;
+    /*shorthand a fentihez:*/
+    animation: moveInRight 1s ease-out; }
 
 .btn {
   /* sodoclasses, special state of a selector*/
@@ -154,3 +123,29 @@ body {
     /*animation name duration timing delay*/
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode: backwards; }
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  /*óramutató járásának megfelelően adjuk meg a sarkok koordinátáit -> %, pixel, vh ...
+  TRIANGLE pl: clip-path: polygon(0 0, 100% 50%, 0 100% );
+  benettfeely.com/clippy
+  */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  .header__logo-box {
+    /*absolute position -> szülője a header -> pos: relative, a tőle való pozíciót állítjuk!*/
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /*a pozícionálással a text-box 40-50nél kezdődne (ott lenne a 0 0 pont), ezzel tudjuk csúsztatni*/
+    transform: translate(-50%, -50%);
+    text-align: center; }
