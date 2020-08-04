@@ -33,6 +33,15 @@
       background-color:$color-white;
     }
   }
+
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color:$color-white;
+    }
+  }
   /*
   ::after selector inserts something after the content of each selected element(s)
   content property to specify the content to insert.
