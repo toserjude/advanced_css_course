@@ -1,0 +1,18 @@
+.background-video {
+  // szülőt relatívra! -> section__stories
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: .15;
+  z-index: -1;
+  overflow: hidden;
+
+  &__content {
+    height: 100%;
+    width: 100%;
+    // kábé ugyanazt csinálja, mint a background image : cover, kitölti a szülőt a megfelelő képarányban
+    object-fit: cover;
+  }
+}
