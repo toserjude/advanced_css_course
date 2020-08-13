@@ -27,3 +27,30 @@
   padding: 15rem 0;
   position: relative;
 }
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+}
+
+.book {
+  // solid color linear gradient ->0%nál milyen színű, 50%ig milyen színű, köv 50% milyen színű vagy valami ilyesmi, de a 0% nélkül is működik
+  // deg -> forgatjuk az átmenet irányát
+  background-image: linear-gradient(
+                        105deg,
+                        rgba($color-white, .9) 0%,
+                        rgba($color-white, .9) 50%,
+                        transparent 50%),
+                    url("../../img/nat-10.jpg");
+  // cover === 100%
+  background-size: cover;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+  height: 50rem;
+
+  &__form {
+    width: 50%;
+    padding: 6rem;
+  }
+
+}
